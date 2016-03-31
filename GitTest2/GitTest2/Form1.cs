@@ -26,9 +26,15 @@ namespace GitTest2
 
             if (sf.ShowDialog() == DialogResult.OK)
             {
-                wc.DownloadDataAsync(new Uri("https://www.dropbox.com/s/erom0g5vol34noc/IMG_0159.PNG?dl=0"), sf.FileName);
+                wc.DownloadDataAsync(new Uri("http://www.filedropper.com/test_49"), sf.FileName);
                 wc.DownloadDataCompleted += Wc_DownloadDataCompleted;
+                wc.DownloadProgressChanged += Wc_DownloadProgressChanged;
             }
+        }
+
+        private void Wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            progressBar1.Increment(e.ProgressPercentage);
         }
 
         private void Wc_DownloadDataCompleted(object sender, DownloadDataCompletedEventArgs e)
