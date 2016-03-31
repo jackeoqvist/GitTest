@@ -26,8 +26,14 @@ namespace GitTest2
 
             if (sf.ShowDialog() == DialogResult.OK)
             {
-                wc.DownloadDataAsync(new Uri(""), sf.FileName);
+                wc.DownloadDataAsync(new Uri("https://www.dropbox.com/s/erom0g5vol34noc/IMG_0159.PNG?dl=0"), sf.FileName);
+                wc.DownloadDataCompleted += Wc_DownloadDataCompleted;
             }
+        }
+
+        private void Wc_DownloadDataCompleted(object sender, DownloadDataCompletedEventArgs e)
+        {
+            MessageBox.Show("File Downloded!");
         }
     }
 }
